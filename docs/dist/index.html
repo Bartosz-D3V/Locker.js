@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#clearSpecified">clearSpecified</a></li><li><a href="global.html#exists">exists</a></li><li><a href="global.html#get">get</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#addSafely">addSafely</a></li><li><a href="global.html#clear">clear</a></li><li><a href="global.html#clearSpecified">clearSpecified</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getMap">getMap</a></li><li><a href="global.html#keyExists">keyExists</a></li><li><a href="global.html#saveMap">saveMap</a></li><li><a href="global.html#size">size</a></li><li><a href="global.html#valueExists">valueExists</a></li></ul>
 </nav>
 
 <div id="main">
@@ -45,6 +45,70 @@
     
 
 
+    <section class="readme">
+        <article><h1>LockerJS - HTML5 Storage Wrapper</h1><p><em>Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.</em></p>
+<h2>Installation</h2><h3>NPM</h3><p><code>npm install --save lockerjs</code></p>
+<h3>Yarn</h3><p><code>yarn add lockerjs</code></p>
+<h2>Usage</h2><pre class="prettyprint source lang-js"><code>import Locker from 'lockerjs';
+
+const locker = new Locker(window.localStorage);
+// or
+const locker = new Locker(window.sessionStorage);</code></pre><h2>Features</h2><h2>add</h2><p>setItem does the job, although it is quite limited as it accepts only String - String values.
+By using LockerJS you are no longer limited by value types!
+Saving object with key 1 is as easy as:</p>
+<pre class="prettyprint source lang-js"><code>const myObj = {
+    'name': 'John',
+    'surname': 'Test',
+};
+locker.add(1, myObj);</code></pre><p>Isn't that easy?
+You can use <em>any</em> parameter type as your key and value;</p>
+<h3>addSafely</h3><p>Only adds value to specific key if a given key <em>is not</em> already used.
+Otherwise throws an error.</p>
+<pre class="prettyprint source lang-js"><code>locker.addSafely('Key 1', 1); //OK
+locker.addSafely('Key 1', 123); //ReferenceError: 'Provided key is already in use'</code></pre><h2>get</h2><p>getItem allows you to retrieve text value from storage by passing key, but wouldn't that be great just to pass <em>any</em> parameter type?
+Consider this snippet:</p>
+<pre class="prettyprint source lang-js"><code>locker.get(123);</code></pre><p>Isn't that as easy as one-two-three?
+There's more!
+Locker will return you an original value type!</p>
+<pre class="prettyprint source lang-js"><code>const myArr = [1, 2, 3];
+locker.add(1, myArr);
+const retrievedArr = locker.get(1);
+typeof retrievedArr; // &quot;array&quot;
+console.log(retrievedArr); // [1, 2, 3]</code></pre><p>Of course, same goes for numbers, objects, ES6 Maps etc.</p>
+<h3>keyExists</h3><p>Simply returns <em>true</em> if a given key has been already used, otherwise <em>false</em></p>
+<pre class="prettyprint source lang-js"><code>locker.add(2, 1234);
+locker.keyExists(2) // True
+locker.keyExists({'name': 'John'}) // False</code></pre><h3>valueExists</h3><p>Simply returns <em>true</em> if a given value has been already used, otherwise <em>false</em>.</p>
+<pre class="prettyprint source lang-js"><code>const mySet = new Set();
+mySet.set(&quot;Some array&quot;, [1, 2, 3]);
+locker.add(mySet);
+locker.valueExists(mySet); // True</code></pre><h3>clear</h3><p>Clear the whole storage</p>
+<pre class="prettyprint source lang-js"><code>locker.add(1, [1, 2]);
+locker.clear(); //Empty</code></pre><h3>clearSpecified</h3><p>Pass an array of keys that shall be removed and Locker will remove only those entries</p>
+<pre class="prettyprint source lang-js"><code>const testObj = {
+    'name': 'John'
+}
+locker.add(testObj, &quot;We like this customer!&quot;);
+locker.add(1, 123);
+const keysToRemove = ['1', testObj];
+locker.clearSpecified(keysToRemove); // Empty</code></pre><p>As you have noticed you can mix &amp; match all value types to your preferences.</p>
+<h3>saveMap</h3><p>Convert &amp; copy keys and values from ES6 Map into storage.</p>
+<pre class="prettyprint source lang-js"><code>const sampleMap = new Map();
+map.set(1, 'First entry');
+map.set(2, 'Second entry');
+locker.clear();
+locker.saveMap(sampleMap);
+locker.get(1); // 'First entry'
+locker.get(2); // 'Second entry'</code></pre><h3>getMap</h3><p>If you would like to get a 'backup' of client's storage you can do so by invoking saveMap().
+It will construct ES6 Map from storage.</p>
+<pre class="prettyprint source lang-js"><code>locker.add(1, [1, 2, 3]);
+const backup = locker.saveMap();</code></pre><h1>Contributing</h1><h2>Issues</h2><p>Please raise any issues using a template inside ./github folder.</p>
+<h2>Pull requests</h2><p>All PRs are more than welcome!
+Please use a template provided inside ./github folder and run</p>
+<pre class="prettyprint source"><code>npm test</code></pre><p>before submitting a merge request.</p>
+<h1>License</h1><p>MIT</p></article>
+    </section>
+
 
 
 
@@ -55,7 +119,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jun 25 2017 21:26:07 GMT+0100 (GMT Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 05 2017 20:15:01 GMT+0100 (GMT Summer Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
