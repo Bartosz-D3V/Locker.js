@@ -1,0 +1,33 @@
+{
+  "name": "Locker.js",
+  "description": "Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.",
+  "main": "dist/bemquery-package-boilerplate.umd.js",
+  "authors": [
+      {
+		  "name": "Bartosz-D3V",
+		  "url": "https://github.com/Bartosz-D3V"
+      }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Locker",
+    "Locker.js",
+    "LockerJS",
+    "Storage",
+    "localStorage",
+    "sessionStorage",
+    "library"
+  ],
+  "homepage": "https://github.com/BEMQuery/bemquery-package-boilerplate",
+  "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "config",
+      "CONTRIBUTING.md",
+      "docs",
+      "test",
+      "tests",
+      "src"
+  ]
+}
