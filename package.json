@@ -1,5 +1,5 @@
 {
-  "name": "Locker.js",
+  "name": "lockerjs",
   "version": "1.1.0",
   "description": "Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.",
   "main": "dist/locker.umd.js",
