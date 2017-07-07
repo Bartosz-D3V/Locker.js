@@ -4,7 +4,8 @@ _Extremely light library that makes HTML5 storage usage easier to the edge. No d
 <p align="center">
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/v/lockerjs.svg" alt="npm version"></a>
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/dw/lockerjs.svg" alt="npm version"></a>
-<a href="https://travis-ci.org/Bartosz-D3V/Locker.JS"><img src="https://travis-ci.org/Bartosz-D3V/Locker.JS.svg?branch=master" alt="Build Status"></a>
+<a href="https://travis-ci.org/Bartosz-D3V/Locker.js"><img src="https://travis-ci.org/Bartosz-D3V/Locker.js.svg?branch=master" alt="Build Status"></a>
+<a href="https://ci.appveyor.com/project/Bartosz-D3V/locker-js"><img src="https://ci.appveyor.com/api/projects/status/k8x0lks3i0u5maob?svg=true" alt="Build Status"></a>
 <a href="https://codecov.io/gh/Bartosz-D3V/Locker.JS">
   <img src="https://codecov.io/gh/Bartosz-D3V/Locker.JS/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
@@ -91,6 +92,13 @@ Clear the whole storage
 locker.add(1, [1, 2]);
 locker.clear(); //Empty
 ```
+### size
+Returns the size of the storage
+```js
+locker.add(12, [1,2]
+locker.size(); //1
+```
+
 ### clearSpecified
 Pass an array of keys that shall be removed and Locker will remove only those entries
 ```js

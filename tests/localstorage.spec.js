@@ -236,6 +236,11 @@ describe('Locker', () => {
 				expect(tempMap).to.be.empty;
 				expect(tempMap).to.be.a('map');
 			});
+			it('should returns a map with keys and values', () => {
+				const actualMap = locker.getMap();
+				const actualType = Object.prototype.toString.call(actualMap);
+				expect(actualType).to.equal('[object Map]');
+			});
 		});
 		describe('saveMap method', () => {
 			it('should throw error if map was not passed', () => {
