@@ -95,7 +95,7 @@ locker.clear(); //Empty
 ### size
 Returns the size of the storage
 ```js
-locker.add(12, [1,2]
+locker.add(12, [1,2]);
 locker.size(); //1
 ```
 
@@ -103,7 +103,7 @@ locker.size(); //1
 Pass an array of keys that shall be removed and Locker will remove only those entries
 ```js
 const testObj = {
-    'name': 'John'
+    'name': 'John',
 }
 locker.add(testObj, "We like this customer!");
 locker.add(1, 123);
