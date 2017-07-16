@@ -159,7 +159,7 @@ export default class {
 	 * @param {array} arr
 	 * @example
 	 * const testObj = {
-	 *     'name': 'John'
+	 *     'name': 'John',
 	 * }
 	 * locker.add(testObj, "We like this customer!");
 	 * locker.add(1, 123);
