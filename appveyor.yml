@@ -11,6 +11,7 @@ branches:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install -g yarn
+  - npm install -g codecov
   - yarn install
 
 cache:
@@ -22,11 +23,9 @@ build_script:
   - npm run build
 
 test_script:
-  - node --version
-  - npm --version
   - npm test
 
 build: off
 
-on_success:
+after_test:
   - npm run coverage
