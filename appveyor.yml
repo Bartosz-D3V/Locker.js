@@ -27,3 +27,6 @@ test_script:
   - npm test
 
 build: off
+
+on_success:
+  - npm run coverage
