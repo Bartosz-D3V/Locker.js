@@ -9,7 +9,7 @@
     "lint": "eslint -c config/eslint/.eslintrc.json src/**/*.js tests/**/*.js",
     "pretest": "npm run lint",
     "test": "karma start config/karma/karma.conf.js",
-    "coverage": "codecov",
+    "coverage": "codecov -f 'coverage.yml'",
     "precommit": "npm test",
     "commitmsg": "commitplease .git/COMMIT_EDITMSG",
     "prebuild": "npm test",
