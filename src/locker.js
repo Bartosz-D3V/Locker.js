@@ -15,11 +15,16 @@ export default class {
 	 * const locker = new Locker(window.sessionStorage);
 	 */
 	constructor(storage) {
+		const typeErrMsg = 'Invalid Storage object';
+		const refErrMsg = 'HTML5 Storage is not supported in this environment';
 		if (storage !== window.localStorage &&
 			storage !== window.sessionStorage) {
-			throw new TypeError('Invalid Storage object');
-		} else {
+			throw new TypeError(typeErrMsg);
+		}
+		if (this._isSupported(storage)) {
 			this.storage = storage;
+		} else {
+			throw new ReferenceError(refErrMsg);
 		}
 	}
 
@@ -117,6 +122,28 @@ export default class {
 	}
 
 	/**
+	 * Saves set as-is into localstorage
+	 * @param {Set} set
+	 * @example
+	 * const sampleSet = new Set();
+	 * set.add(1, 'First entry');
+	 * set.add(2, 'Second entry');
+	 * locker.clear();
+	 * locker.saveSet(sampleSet);
+	 * locker.get(1); // 'First entry'
+	 * locker.get(2); // 'Second entry'
+	 */
+	saveSet(set) {
+		const isSet = Object.prototype.toString.call(set) === '[object Set]';
+		if (!isSet) {
+			throw new TypeError('Must be of type Set');
+		}
+		for (let [key, value] of set.entries()) {
+			this.add(key, value);
+		}
+	}
+
+	/**
 	 * Check whether the given key exists in the window.localStorage
 	 * @param {*} key
 	 * @return {boolean}
@@ -201,6 +228,23 @@ export default class {
 			default: {
 				return value;
 			}
+		}
+	}
+
+	/**
+	 * Check whether current environment supports HTML5 storage
+	 * @param {Object} storage
+	 * @return {boolean}
+	 * @private
+	 */
+	_isSupported(storage) {
+		const mockVal = '__test';
+		try {
+			storage.setItem(mockVal, mockVal);
+			storage.removeItem(mockVal);
+			return true;
+		} catch (e) {
+			return false;
 		}
 	}
 }
