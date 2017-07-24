@@ -1,0 +1,12 @@
+exclude_paths:
+  - "dist/**/*"
+  - "docs/**/*"
+  - "coverage/**/*"
+engines:
+  eslint:
+    enabled: true
+duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript

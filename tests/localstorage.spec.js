@@ -72,6 +72,8 @@ describe('Locker', () => {
 					delete mockStorage[prop];
 				}
 			});
+			spyOnProperty(lclStr, 'length', 'get');
+			spyOn(locker, 'size');
 		});
 
 		describe('add method', () => {
@@ -371,6 +373,8 @@ describe('Locker', () => {
 		});
 		describe('size method', () => {
 			it('should return size of the storage', () => {
+				expect(locker.size).to.have.been.called;
+				expect(window.localStorage.length).to.have.been.called;
 			});
 		});
 	});

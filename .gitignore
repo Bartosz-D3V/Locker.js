@@ -514,3 +514,6 @@ __pycache__/
 
 # Dist folder
 dist/**/*
+
+# Coverage folder
+/coverage/**/*
