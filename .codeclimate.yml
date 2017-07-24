@@ -2,6 +2,7 @@ exclude_paths:
   - "dist/**/*"
   - "docs/**/*"
   - "coverage/**/*"
+  - "config/**/*"
 engines:
   eslint:
     enabled: true

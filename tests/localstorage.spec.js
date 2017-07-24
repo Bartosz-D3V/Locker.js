@@ -373,6 +373,7 @@ describe('Locker', () => {
 		});
 		describe('size method', () => {
 			it('should return size of the storage', () => {
+				locker.size();
 				expect(locker.size).to.have.been.called;
 				expect(window.localStorage.length).to.have.been.called;
 			});

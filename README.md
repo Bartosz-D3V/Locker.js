@@ -1,8 +1,8 @@
 # LockerJS - HTML5 Storage Wrapper
-<p align="center">
+
 _Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration._
 <br>
-
+<p align="center">
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/l/express.svg" alt="MIT License"></a>
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/v/lockerjs.svg" alt="npm version"></a>
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/dw/lockerjs.svg" alt="npm version"></a>
