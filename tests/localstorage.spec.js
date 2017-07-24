@@ -356,7 +356,7 @@ describe('Locker', () => {
                 }).to.throw(TypeError, 'Array not provided');
             });
 
-            it('should remove all values provided as an array with keys', () => {
+            it('should remove values provided as an array with keys', () => {
                 const keys = [1, 4, 6, '8'];
                 lclStr.setItem('1', mockText);
                 lclStr.setItem('4', mockText);
