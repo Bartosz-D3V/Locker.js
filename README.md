@@ -15,6 +15,7 @@ _Extremely light library that makes HTML5 storage usage easier to the edge. No d
 <a href="https://david-dm.org/bartosz-d3v/lockerjs" title="dependencies status"><img src="https://david-dm.org/bartosz-d3v/lockerjs/status.svg"/></a>
 <a href="https://david-dm.org/bartosz-d3v/lockerjs/?type=dev"><img src="https://david-dm.org/bartosz-d3v/lockerjs/dev-status.svg" alt="devDependency Status"></a>
 <a href="https://inch-ci.org/github/Bartosz-D3V/locker.js"><img src="http://inch-ci.org/github/Bartosz-D3V/Locker.JS.svg?branch=master" alt="Inline docs"></a>
+<a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/badge/size-1%2C77kb-orange.svg" alt="1.77kb size"></a>
 </p>
 
 
@@ -134,6 +135,31 @@ It will construct ES6 Map from storage.
 ```js
 locker.add(1, [1, 2, 3]);
 const backup = locker.saveMap();
+```
+
+### saveSet
+Convert & copy keys and values from ES6 Set into storage.
+```js
+const sampleSet = new Set();
+set.add(1, 'First entry');
+set.add(2, 'Second entry');
+locker.clear();
+locker.saveSet(sampleSet);
+locker.get(1); // 'First entry'
+locker.get(2); // 'Second entry'
+```
+
+### getMap
+If you would like to get a 'backup' of client's storage you can do so by invoking saveSet().
+It will construct ES6 Set from storage.
+Set will contain objects with keys and values.
+```js
+locker.add(1, [1, 2, 3]);
+const backup = locker.getSet();
+for (let [setKey, setValue] of mockSet.entries()) {
+    console.log(setKey, setValue); // 1, []
+}
+}
 ```
 
 # Contributing

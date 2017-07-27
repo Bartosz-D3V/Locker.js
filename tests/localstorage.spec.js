@@ -163,6 +163,15 @@ describe('Locker', () => {
                 expect(actualVal).to.deep.equal(JSON.stringify(mockMap));
             });
 
+            it('should add a set to storage using number as a key', () => {
+                locker.add(1, mockSet);
+                expect(lclStr.setItem).to.have.been.called;
+                const actualVal = lclStr.getItem('1');
+                const lclSrnSize = Object.keys(mockStorage).length;
+                expect(lclSrnSize).to.equal(1);
+                expect(actualVal).to.deep.equal(JSON.stringify(mockSet));
+            });
+
             it('should add string to storage using object as a key', () => {
                 const parsedKey = JSON.stringify(mockObj);
                 locker.add(mockObj, mockText);
@@ -227,7 +236,7 @@ describe('Locker', () => {
             });
         });
         describe('get method', () => {
-            it('should return string from storage as string', () => {
+            it('should return string from storage as a string', () => {
                 lclStr.setItem('1', mockText);
                 const actualVal = locker.get(1);
                 expect(lclStr.getItem).to.have.been.called;
@@ -235,7 +244,7 @@ describe('Locker', () => {
                 expect(actualVal).to.be.a('string');
             });
 
-            it('should return number from storage as number', () => {
+            it('should return number from storage as a number', () => {
                 lclStr.setItem('1', mockNum);
                 const actualVal = locker.get(1);
                 expect(lclStr.getItem).to.have.been.called;
@@ -243,7 +252,7 @@ describe('Locker', () => {
                 expect(actualVal).to.be.a('number');
             });
 
-            it('should return object from storage as object', () => {
+            it('should return object from storage as an object', () => {
                 const mockObjStringified = JSON.stringify(mockObj);
                 lclStr.setItem('1', mockObjStringified);
                 const retrievedObj = locker.get(1);
@@ -252,12 +261,20 @@ describe('Locker', () => {
                 expect(retrievedObj).should.be.an('object');
             });
 
-            it('should return map from storage as map', () => {
+            it('should return map from storage as a map', () => {
                 const mockMapStringified = JSON.stringify(mockMap);
                 lclStr.setItem('1', mockMapStringified);
                 const retrievedObj = locker.get(1);
                 expect(lclStr.getItem).to.have.been.called;
                 expect(retrievedObj).to.deep.equal(mockMapStringified);
+            });
+
+            it('should return set from storage as a set', () => {
+                const mockSetStringified = JSON.stringify(mockSet);
+                lclStr.setItem('1', mockSetStringified);
+                const retrievedObj = locker.get(1);
+                expect(lclStr.getItem).to.have.been.called;
+                expect(retrievedObj).to.deep.equal(mockSetStringified);
             });
         });
         describe('getMap method', () => {
@@ -293,6 +310,19 @@ describe('Locker', () => {
                 expect(() => {
                     locker.saveSet(mockObj);
                 }).to.throw(TypeError, 'Must be of type Set');
+            });
+
+            it('should returns a map with objects with keys and values', () => {
+                locker.saveMap(mockMap);
+                const mockSet = locker.getSet();
+                const actualType = Object.prototype.toString.call(mockSet);
+                expect(actualType).to.equal('[object Set]');
+                for (let [setKey, setValue] of mockSet.entries()) {
+                    for (let [mapKey, mapValue] of mockMap.entries()) {
+                        expect(setKey).to.equal(mapKey);
+                        expect(setValue).to.equal(mapValue);
+                    }
+                }
             });
         });
         describe('keyExists method', () => {

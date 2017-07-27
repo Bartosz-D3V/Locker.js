@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint -c config/eslint/.eslintrc.json src/**/*.js tests/**/*.js",
     "pretest": "npm run lint",
-    "test": "karma start config/karma/karma.conf.js",
+    "test": "karma start config/karma/karma.conf.js --single-run",
     "coverage": "codecov -f .codecov.yml",
     "precommit": "npm test",
     "commitmsg": "commitplease .git/COMMIT_EDITMSG",

@@ -105,11 +105,11 @@ export default class {
     }
 
     /**
-     * Saves and returns whole storage as map
+     * Saves and returns whole storage as a map
      * @return {Map} HTML5 Storage copy
      * @example
      * locker.add(1, [1, 2, 3]);
-     * const backup = locker.saveMap();
+     * const backup = locker.getMap();
      */
     getMap() {
         const mappedStorage = new Map();
@@ -141,6 +141,32 @@ export default class {
         for (let [key, value] of set.entries()) {
             this.add(key, value);
         }
+    }
+
+    /**
+     * Saves and returns whole storage as a set
+     * @return {Set} HTML5 Storage copy
+     * @example
+     * locker.add(1, [1, 2, 3]);
+     * const backup = locker.getSet();
+     */
+    getSet() {
+        const mappedSet = new Set();
+        for (let i = 0; i < this.storage.length; i++) {
+            const tempKey = this._parseToString(this.storage.key(i)) || null;
+            const tempVal = this._parseToString(this.storage.getItem(tempKey));
+            let fetchedVal;
+            if (tempKey) {
+                fetchedVal = {
+                    'key': tempKey,
+                    'value': tempVal,
+                };
+            } else {
+                fetchedVal = tempVal;
+            }
+            mappedSet.add(fetchedVal);
+        }
+        return mappedSet;
     }
 
     /**
