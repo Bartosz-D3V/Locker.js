@@ -317,6 +317,7 @@ describe('Locker', () => {
                 const mockSet = locker.getSet();
                 const actualType = Object.prototype.toString.call(mockSet);
                 expect(actualType).to.equal('[object Set]');
+                expect(locker._parseToString).to.have.been.called;
                 for (let [setKey, setValue] of mockSet.entries()) {
                     for (let [mapKey, mapValue] of mockMap.entries()) {
                         expect(setKey).to.equal(mapKey);
