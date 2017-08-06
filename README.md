@@ -100,7 +100,7 @@ locker.clear(); //Empty
 Returns the size of the storage
 ```js
 locker.add(12, [1,2]);
-locker.size(); //1
+locker.size(); //2
 ```
 
 ### clearSpecified
