@@ -5,7 +5,6 @@ _Extremely light library that makes HTML5 storage usage easier to the edge. No d
 <p align="center">
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/l/express.svg" alt="MIT License"></a>
 <a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/v/lockerjs.svg" alt="npm version"></a>
-<a href="https://www.npmjs.com/package/lockerjs"><img src="https://img.shields.io/npm/dw/lockerjs.svg" alt="npm version"></a>
 <a href="https://travis-ci.org/Bartosz-D3V/Locker.js"><img src="https://travis-ci.org/Bartosz-D3V/Locker.js.svg?branch=master" alt="Build Status"></a>
 <a href="https://ci.appveyor.com/project/Bartosz-D3V/locker-js"><img src="https://ci.appveyor.com/api/projects/status/ceq04cukdgoci2eq?svg=true" alt="Build Status"></a>
 <a href="https://codecov.io/gh/Bartosz-D3V/Locker.JS">
@@ -133,7 +132,7 @@ If you would like to get a 'backup' of client's storage you can do so by invokin
 It will construct ES6 Map from storage.
 ```js
 locker.add(1, [1, 2, 3]);
-const backup = locker.saveMap();
+const backup = locker.getMap();
 ```
 
 # Contributing
