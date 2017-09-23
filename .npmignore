@@ -1,3 +1,7 @@
 coverage/
+.github/
+.codeclimate.yml
+.codecov.yml
 .travis.yml
-bower.json
+appveyor.yml
+*.lock

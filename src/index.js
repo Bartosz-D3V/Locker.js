@@ -1,1 +1,3 @@
-export {default as LocalStorage} from './locker';
+import Locker from './locker';
+
+export default Locker;

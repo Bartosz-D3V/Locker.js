@@ -10,7 +10,6 @@ _Extremely light library that makes HTML5 storage usage easier to the edge. No d
 <a href="https://codecov.io/gh/Bartosz-D3V/Locker.JS">
   <img src="https://codecov.io/gh/Bartosz-D3V/Locker.JS/branch/master/graph/badge.svg" alt="Codecov" />
 </a>
-<a href="https://codeclimate.com/github/Bartosz-D3V/Locker.js"><img src="https://codeclimate.com/github/Bartosz-D3V/Locker.js/badges/gpa.svg" /></a>
 <a href="https://david-dm.org/bartosz-d3v/lockerjs" title="dependencies status"><img src="https://david-dm.org/bartosz-d3v/lockerjs/status.svg"/></a>
 <a href="https://david-dm.org/bartosz-d3v/lockerjs/?type=dev"><img src="https://david-dm.org/bartosz-d3v/lockerjs/dev-status.svg" alt="devDependency Status"></a>
 <a href="https://inch-ci.org/github/Bartosz-D3V/locker.js"><img src="http://inch-ci.org/github/Bartosz-D3V/Locker.JS.svg?branch=master" alt="Inline docs"></a>
@@ -142,7 +141,7 @@ Please raise any issues using a template inside ./github folder.
 
 ## Pull requests
 All PRs are more than welcome!
-Please use a template provided inside ./github folder and run
+Please run
 ```
 npm test
 ```

@@ -1,106 +1,103 @@
 {
-  "name": "lockerjs",
-  "version": "1.2.5",
-  "description": "Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.",
-  "main": "dist/locker.umd.js",
-  "jsnext:main": "dist/locker.js",
-  "module": "dist/locker.js",
-  "scripts": {
-    "lint": "eslint -c config/eslint/.eslintrc.json src/**/*.js tests/**/*.js",
-    "pretest": "npm run lint",
-    "test": "karma start config/karma/karma.conf.js",
-    "coverage": "codecov -f .codecov.yml",
-    "precommit": "npm test",
-    "commitmsg": "commitplease .git/COMMIT_EDITMSG",
-    "prebuild": "npm test",
-    "build": "rollup -c config/rollup/umd.js && rollup -c config/rollup/es6.js && rollup -c config/rollup/es5.js",
-    "build-docs": "jsdoc -c config/jsdoc/default.json ./src",
-    "publish-docs": "npm run build-docs && git checkout gh-pages && ncp docs/dist ./ && git add -A && git commit -m \"docs(gh-pages): update docs [ci skip]\" && git push origin gh-pages && git checkout master",
-    "preversion": "npm run build && git add -f dist/",
-    "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags",
-    "prepublish": "in-publish && npm run build || exit 0"
-  },
-  "commitplease": {
-    "nohook": true,
-    "style": "angular",
-    "types": [
-      "feat",
-      "fix",
-      "docs",
-      "style",
-      "refactor",
-      "perf",
-      "test",
-      "build",
-      "ci",
-      "chore",
-      "revert"
+    "name": "lockerjs",
+    "version": "1.2.5",
+    "description": "Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.",
+    "main": "src/index.js",
+    "module": "lockerjs",
+    "scripts": {
+        "lint": "eslint -c config/eslint/.eslintrc.json src/**/*.js tests/**/*.js",
+        "pretest": "npm run lint",
+        "test": "karma start config/karma/karma.conf.js",
+        "coverage": "codecov -f .codecov.yml",
+        "precommit": "npm test",
+        "commitmsg": "commitplease .git/COMMIT_EDITMSG",
+        "prebuild": "npm test",
+        "build": "rollup -c config/rollup/umd.js && rollup -c config/rollup/es6.js && rollup -c config/rollup/es5.js",
+        "build-docs": "jsdoc -c config/jsdoc/default.json ./src",
+        "publish-docs": "npm run build-docs && git checkout gh-pages && ncp docs/dist ./ && git add -A && git commit -m \"docs(gh-pages): update docs [ci skip]\" && git push origin gh-pages && git checkout master",
+        "preversion": "npm run build && git add -f dist/",
+        "postversion": "git rm -r --cached dist/ && git commit -m \"chore(dist): clean after release [ci skip]\" && git push origin && git push origin --tags",
+        "prepublish": "in-publish && npm run build || exit 0"
+    },
+    "commitplease": {
+        "nohook": true,
+        "style": "angular",
+        "types": [
+            "feat",
+            "fix",
+            "docs",
+            "style",
+            "refactor",
+            "perf",
+            "test",
+            "build",
+            "ci",
+            "chore",
+            "revert"
+        ],
+        "scope": "\\S+.*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Bartosz-D3V/Locker.JS"
+    },
+    "keywords": [
+        "Locker",
+        "Locker.js",
+        "LockerJS",
+        "Storage",
+        "localStorage",
+        "sessionStorage",
+        "library"
     ],
-    "scope": "\\S+.*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Bartosz-D3V/Locker.JS"
-  },
-  "keywords": [
-    "Locker",
-    "Locker.js",
-    "LockerJS",
-    "Storage",
-    "localStorage",
-    "sessionStorage",
-    "library"
-  ],
-  "files": [
-    "dist"
-  ],
-  "author": {
-    "name": "Bartosz-D3V",
-    "url": "https://github.com/Bartosz-D3V/Locker.JS"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Bartosz-D3V/Locker.JS/issues"
-  },
-  "homepage": "https://github.com/Bartosz-D3V/Locker.JS#readme",
-  "devDependencies": {
-    "babel-plugin-external-helpers": "^6.8.0",
-    "babel-preset-es2015": "^6.13.2",
-    "chai": "^3.5.0",
-    "codecov": "^2.2.0",
-    "commitplease": "^2.7.10",
-    "cz-conventional-changelog": "^2.0.0",
-    "docdash": "^0.4.0",
-    "eslint": "^4.1.0",
-    "eslint-config-google": "^0.8.0",
-    "husky": "^0.14.0",
-    "in-publish": "^2.0.0",
-    "jasmine": "^2.6.0",
-    "jsdoc": "^3.4.0",
-    "karma": "^1.0.0",
-    "karma-chai": "^0.1.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-coverage": "^1.1.1",
-    "karma-coverage-istanbul-reporter": "^1.3.0",
-    "karma-html2js-preprocessor": "^1.0.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-rollup-preprocessor": "^4.0.0",
-    "lolex": "^1.4.0",
-    "ncp": "^2.0.0",
-    "rollup": "^0.42.0",
-    "rollup-plugin-babel": "^2.6.1",
-    "rollup-plugin-babili": "^3.0.0",
-    "rollup-plugin-commonjs": "^8.0.0",
-    "rollup-plugin-istanbul": "^1.1.0",
-    "rollup-plugin-mockr": "^1.0.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.0",
-    "uglify-js": "^3.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "dependencies": {}
+    "author": {
+        "name": "Bartosz-D3V",
+        "url": "https://github.com/Bartosz-D3V/Locker.JS"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Bartosz-D3V/Locker.JS/issues"
+    },
+    "homepage": "https://github.com/Bartosz-D3V/Locker.JS#readme",
+    "devDependencies": {
+        "babel-plugin-external-helpers": "^6.8.0",
+        "babel-preset-es2015": "^6.13.2",
+        "chai": "^3.5.0",
+        "codecov": "^2.2.0",
+        "commitplease": "^2.7.10",
+        "cz-conventional-changelog": "^2.0.0",
+        "docdash": "^0.4.0",
+        "eslint": "^4.1.0",
+        "eslint-config-google": "^0.8.0",
+        "greenkeeper-lockfile": "^1.9.0",
+        "husky": "^0.14.0",
+        "in-publish": "^2.0.0",
+        "jasmine": "^2.6.0",
+        "jsdoc": "^3.4.0",
+        "karma": "^1.0.0",
+        "karma-chai": "^0.1.0",
+        "karma-chrome-launcher": "^2.0.0",
+        "karma-coverage": "^1.1.1",
+        "karma-coverage-istanbul-reporter": "^1.3.0",
+        "karma-html2js-preprocessor": "^1.0.0",
+        "karma-jasmine": "^1.1.0",
+        "karma-rollup-preprocessor": "^4.0.0",
+        "lolex": "^1.4.0",
+        "ncp": "^2.0.0",
+        "rollup": "^0.42.0",
+        "rollup-plugin-babel": "^2.6.1",
+        "rollup-plugin-babili": "^3.0.0",
+        "rollup-plugin-commonjs": "^8.0.0",
+        "rollup-plugin-istanbul": "^1.1.0",
+        "rollup-plugin-mockr": "^1.0.1",
+        "rollup-plugin-node-resolve": "^3.0.0",
+        "rollup-plugin-uglify": "^2.0.0",
+        "uglify-js": "^3.0.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {}
 }
