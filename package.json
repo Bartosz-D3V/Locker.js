@@ -1,6 +1,6 @@
 {
     "name": "lockerjs",
-    "version": "1.2.5",
+    "version": "2.0.0",
     "description": "Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration.",
     "main": "src/index.js",
     "module": "lockerjs",
