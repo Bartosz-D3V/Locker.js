@@ -1,5 +1,7 @@
 # LockerJS - HTML5 Storage Wrapper
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Bartosz-D3V/Locker.js.svg)](https://greenkeeper.io/)
+
 _Extremely light library that makes HTML5 storage usage easier to the edge. No dependencies, no configuration._
 <br>
 <p align="center">
